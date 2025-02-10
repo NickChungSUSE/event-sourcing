@@ -3,6 +3,11 @@ package com.neu.eventsourcing.query.usecase;
 import com.neu.eventsourcing.query.domain.Event;
 import com.neu.eventsourcing.query.domain.EventRepository;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.axonframework.eventhandling.DomainEventMessage;
+import org.axonframework.eventsourcing.eventstore.EventStore;
+import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +21,7 @@ public class EventService {
     return eventRepository.query();
   }
 
-  public Event getById(Long id) {
-    return eventRepository.getById(id);
+  public Set<Event> getByAggregateId(String id) {
+    return eventRepository.getByAggregateId(id);
   }
 }

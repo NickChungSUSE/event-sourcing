@@ -13,6 +13,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        packages-to-scan: >
+          org.axonframework.eventhandling.tokenstore,
+          org.axonframework.modelling.saga.repository,
+          org.axonframework.eventsourcing.eventstore.jpa
     show-sql: true
 
 server:
@@ -20,7 +24,29 @@ server:
   servlet:
     context-path: /api
 
+axon:
+  serializer:
+    events: jackson
+    general: jackson
+    messages: jackson
+  serializer-security:
+    allowed-types: >
+      com.neu.eventsourcing.**,
+      org.axonframework.**,
+      java.util.**
+    allowed-classes: >
+      com.neu.eventsourcing.**,
+      org.axonframework.**,
+      java.util.**
+  eventhandling:
+    processors:
+      scanner-events:
+        mode: tracking
+        thread-count: 1
+  axonserver:
+    enabled: false
+    servers: localhost:8124
+
 logging:
   level:
     root: INFO
-#    org.springframework: DEBUG

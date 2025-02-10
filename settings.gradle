@@ -1,4 +1,5 @@
 rootProject.name = 'event-sourcing'
 include 'event-sourcing-command'
 include 'event-sourcing-query'
+include 'scanner'
 

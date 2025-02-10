@@ -9,18 +9,57 @@ spring:
       maximum-pool-size: 10
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        packages-to-scan: org.axonframework.eventhandling.tokenstore,org.axonframework.modelling.saga.repository,org.axonframework.eventsourcing.eventstore
     show-sql: true
+    open-in-view: false
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "com.neu.eventsourcing.*"
+        spring.json.use.type.headers: true
+
 
 server:
   port: 8080
   servlet:
     context-path: /api
 
+axon:
+  serializer:
+    events: jackson
+    general: jackson
+    messages: jackson
+  eventhandling:
+    processors:
+      scanner-events:
+        mode: tracking
+        thread-count: 1
+  axonserver:
+    enabled: false
+    servers: localhost:8124
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: scan-service
+    default-topic: scan-events
+    publisher:
+      confirmation-mode: transactional
+    producer:
+      retries: 3
+
 logging:
   level:
     root: INFO
-#    org.springframework: DEBUG
+    org.axonframework: INFO
+    org.hibernate.SQL: INFO
+    org.apache.kafka: INFO

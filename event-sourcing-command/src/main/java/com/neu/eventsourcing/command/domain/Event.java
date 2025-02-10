@@ -11,6 +11,10 @@ public class Event {
 
   }
 
+  public Event(Long correlationId) {
+    this.correlationId = correlationId;
+  }
+
   public Event(Long id, Long correlationId) {
     this.id = id;
     this.correlationId = correlationId;
@@ -25,7 +29,7 @@ public class Event {
   }
 
   public void generateCorrelationId() {
-    this.correlationId = UUID.randomUUID().getLeastSignificantBits();
+    this.correlationId = UUID.randomUUID().getMostSignificantBits();
   }
 
   @Override

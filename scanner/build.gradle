@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.4.1'
     id 'io.spring.dependency-management' version '1.1.7'
 }
-group = 'com.neu.eventsourcing.query'
+group = 'com.neu.eventsourcing.scanner'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -12,16 +12,10 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.kafka:spring-kafka'
 
     implementation 'io.opentelemetry:opentelemetry-api:1.46.0'
-    implementation 'org.axonframework:axon:4.10.3'
-    implementation 'org.axonframework:axon-configuration:4.10.3'
-    implementation 'org.axonframework:axon-spring-boot-starter:4.10.3'
     implementation 'org.slf4j:slf4j-api:2.0.16'
-
-    runtimeOnly 'org.postgresql:postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'

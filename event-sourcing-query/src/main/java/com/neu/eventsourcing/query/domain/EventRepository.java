@@ -1,10 +1,11 @@
 package com.neu.eventsourcing.query.domain;
 
 import java.util.Set;
+import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry;
 
 public interface EventRepository {
 
   Set<Event> query();
 
-  Event getById(Long id);
+  Set<Event> getByAggregateId(String aggregateId);
 }

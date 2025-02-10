@@ -1,4 +1,4 @@
-package com.neu.eventsourcing.query.main.configuration;
+package com.neu.eventsourcing.query.main.config;
 
 import com.neu.eventsourcing.query.infrastructure.EventJpaRepository;
 import com.neu.eventsourcing.query.infrastructure.EventRepositoryImpl;
@@ -9,8 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.neu.eventsourcing.query.infrastructure")
-@EntityScan(basePackages = "com.neu.eventsourcing.query.infrastructure.entity")
-public class EventConfiguration {
+@EntityScan(basePackages = {"com.neu.eventsourcing.query.infrastructure.entity",
+    "org.axonframework.eventsourcing.eventstore.jpa"})
+public class EventConfig {
 
   @Bean
   public EventRepositoryImpl eventRepositoryImpl(EventJpaRepository eventJpaRepository) {

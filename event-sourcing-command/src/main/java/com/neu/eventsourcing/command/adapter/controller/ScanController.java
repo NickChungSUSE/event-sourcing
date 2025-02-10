@@ -16,7 +16,7 @@ public class ScanController {
 
   @PostMapping
   public ResponseEntity<Void> scan() {
-    scanService.scan();
+    scanService.startScan();
     return ResponseEntity.ok().build();
   }
 }
