@@ -1,14 +1,14 @@
-package com.neu.eventsourcing.scanner.event;
+package com.neu.eventsourcing.mockservice.event;
 
 import java.time.LocalDateTime;
 
-public class ScanFailedEvent {
+public class ScanFailed {
 
   private final String scanId;
   private final String errorMessage;
   private final LocalDateTime timestamp;
 
-  public ScanFailedEvent(String scanId, String errorMessage, LocalDateTime timestamp) {
+  public ScanFailed(String scanId, String errorMessage, LocalDateTime timestamp) {
     this.scanId = scanId;
     this.errorMessage = errorMessage;
     this.timestamp = timestamp;

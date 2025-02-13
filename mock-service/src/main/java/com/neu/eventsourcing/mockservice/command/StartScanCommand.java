@@ -1,17 +1,16 @@
-package com.neu.eventsourcing.scanner.event;
+package com.neu.eventsourcing.mockservice.command;
 
 import java.time.LocalDateTime;
 
-public class ScanProgressEvent {
+public class StartScanCommand {
 
   private String scanId;
   private LocalDateTime timestamp;
 
-  // Required for JSON deserialization
-  public ScanProgressEvent() {
+  public StartScanCommand() {
   }
 
-  public ScanProgressEvent(String scanId) {
+  public StartScanCommand(String scanId) {
     this.scanId = scanId;
     this.timestamp = LocalDateTime.now();
   }

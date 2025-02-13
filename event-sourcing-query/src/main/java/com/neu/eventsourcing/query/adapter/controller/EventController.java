@@ -2,11 +2,7 @@ package com.neu.eventsourcing.query.adapter.controller;
 
 import com.neu.eventsourcing.query.domain.Event;
 import com.neu.eventsourcing.query.usecase.EventService;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import org.axonframework.eventhandling.DomainEventMessage;
-import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/events")
 public class EventController {
 
-  @Autowired
-  private EventService eventService;
+  private final EventService eventService;
+
+  public EventController(EventService eventService) {
+    this.eventService = eventService;
+  }
 
   @GetMapping
   public ResponseEntity<Set<Event>> query() {
@@ -27,8 +26,7 @@ public class EventController {
   }
 
   @GetMapping(path = "/{aggregateId}")
-  public ResponseEntity<Set<Event>> queryByAggregateId(
-      @PathVariable String aggregateId) {
+  public ResponseEntity<Set<Event>> queryByAggregateId(@PathVariable String aggregateId) {
     return ResponseEntity.ok(eventService.getByAggregateId(aggregateId));
   }
 }

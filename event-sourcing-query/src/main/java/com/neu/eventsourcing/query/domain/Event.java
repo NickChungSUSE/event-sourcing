@@ -12,7 +12,6 @@ public class Event {
   private final long sequenceNumber;
   private final Instant timestamp;
 
-  // Private constructor
   private Event(Builder builder) {
     this.eventIdentifier = builder.eventIdentifier;
     this.payload = builder.payload;
@@ -23,7 +22,6 @@ public class Event {
     this.timestamp = builder.timestamp;
   }
 
-  // Getters
   public String getEventIdentifier() {
     return eventIdentifier;
   }
@@ -60,7 +58,6 @@ public class Event {
         + timestamp + '\'' + '}';
   }
 
-  // Builder Class
   public static class Builder {
 
     private String eventIdentifier;

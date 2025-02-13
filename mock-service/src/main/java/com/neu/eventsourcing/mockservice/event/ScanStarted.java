@@ -1,16 +1,16 @@
-package com.neu.eventsourcing.scanner.event;
+package com.neu.eventsourcing.mockservice.event;
 
 import java.time.LocalDateTime;
 
-public class ScanStartedEvent {
+public class ScanStarted {
 
   private String scanId;
   private LocalDateTime timestamp;
 
-  public ScanStartedEvent() {
+  public ScanStarted() {
   }
 
-  public ScanStartedEvent(String scanId) {
+  public ScanStarted(String scanId) {
     this.scanId = scanId;
     this.timestamp = LocalDateTime.now();
   }

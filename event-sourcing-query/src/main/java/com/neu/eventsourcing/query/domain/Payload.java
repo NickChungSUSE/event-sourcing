@@ -2,8 +2,8 @@ package com.neu.eventsourcing.query.domain;
 
 public class Payload {
 
-  private final String data; // Base64-encoded string
-  private final Object type;   // Nested type information
+  private final String data;
+  private final Object type;
   private final String contentType;
 
   private Payload(Builder builder) {

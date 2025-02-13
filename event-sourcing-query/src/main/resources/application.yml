@@ -45,7 +45,6 @@ axon:
         thread-count: 1
   axonserver:
     enabled: false
-    servers: localhost:8124
 
 logging:
   level:

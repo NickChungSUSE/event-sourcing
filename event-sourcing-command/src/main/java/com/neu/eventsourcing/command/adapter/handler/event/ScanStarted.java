@@ -3,17 +3,16 @@ package com.neu.eventsourcing.command.adapter.handler.event;
 import java.time.LocalDateTime;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class ScanProgressEvent {
+public class ScanStarted {
 
   @TargetAggregateIdentifier
   private String scanId;
   private LocalDateTime timestamp;
 
-  // Required for JSON deserialization
-  public ScanProgressEvent() {
+  public ScanStarted() {
   }
 
-  public ScanProgressEvent(String scanId) {
+  public ScanStarted(String scanId) {
     this.scanId = scanId;
     this.timestamp = LocalDateTime.now();
   }
@@ -33,5 +32,5 @@ public class ScanProgressEvent {
   public void setTimestamp(LocalDateTime timestamp) {
     this.timestamp = timestamp;
   }
-}
 
+}

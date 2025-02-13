@@ -1,11 +1,11 @@
-package com.neu.eventsourcing.scanner;
+package com.neu.eventsourcing.mockservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @AutoConfiguration
-@SpringBootApplication(scanBasePackages = "com.neu.eventsourcing.scanner")
+@SpringBootApplication(scanBasePackages = "com.neu.eventsourcing.mockservice")
 public class Application {
 
   public static void main(String[] args) {

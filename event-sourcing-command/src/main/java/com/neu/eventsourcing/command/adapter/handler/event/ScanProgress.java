@@ -1,16 +1,18 @@
-package com.neu.eventsourcing.scanner.command;
+package com.neu.eventsourcing.command.adapter.handler.event;
 
 import java.time.LocalDateTime;
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class StartScanCommand {
+public class ScanProgress {
 
+  @TargetAggregateIdentifier
   private String scanId;
   private LocalDateTime timestamp;
 
-  public StartScanCommand() {
+  public ScanProgress() {
   }
 
-  public StartScanCommand(String scanId) {
+  public ScanProgress(String scanId) {
     this.scanId = scanId;
     this.timestamp = LocalDateTime.now();
   }
