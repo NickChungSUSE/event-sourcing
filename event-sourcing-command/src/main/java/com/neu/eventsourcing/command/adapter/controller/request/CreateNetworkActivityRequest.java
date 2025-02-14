@@ -1,24 +1,16 @@
-package com.neu.eventsourcing.command.adapter.handler.event;
+package com.neu.eventsourcing.command.adapter.controller.request;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.Set;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class NetworkActivityCreated {
+public class CreateNetworkActivityRequest {
 
-  @TargetAggregateIdentifier
-  private String id;
   private Set<Edge> edges;
   private Set<Node> nodes;
   private Set<Combo> combos;
 
-  public NetworkActivityCreated() {}
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
+  public CreateNetworkActivityRequest() {
   }
 
   public Set<Edge> getEdges() {
@@ -428,19 +420,19 @@ public class NetworkActivityCreated {
 
   public static class NodeData {
 
-    private long time;
+    private Instant time;
     private long value;
-    private long label;
+    private String label;
 
     public NodeData() {
 
     }
 
-    public long getTime() {
+    public Instant getTime() {
       return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Instant time) {
       this.time = time;
     }
 
@@ -452,11 +444,11 @@ public class NetworkActivityCreated {
       this.value = value;
     }
 
-    public long getLabel() {
+    public String getLabel() {
       return label;
     }
 
-    public void setLabel(long label) {
+    public void setLabel(String label) {
       this.label = label;
     }
   }
